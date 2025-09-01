@@ -5,30 +5,34 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\ValidationException;
 
 class PasswordResetLinkController extends Controller
 {
-    public function store(Request $request): JsonResponse
+    public function sendResetLinkEmail(Request $request)
+    {
+        $request->validate(['email' => 'required|email']);
+        $response = Password::sendResetLink($request->only('email'));
+        return $response == Password::RESET_LINK_SENT
+            ? response()->json(['message' => 'Reset link sent successfully'], 200)
+            : response()->json(['error' => 'Failed to send reset link'], 400);
+    }
+
+    public function reset(Request $request)
     {
         $request->validate([
-            'email' => ['required', 'email'],
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:8',
         ]);
-
-        // We will send the password reset link to this user. Once we have attempted
-        // to send the link, we will examine the response then see the message we
-        // need to show to the user. Finally, we'll send out a proper response.
-        $status = Password::sendResetLink(
-            $request->only('email')
-        );
-
-        if ($status != Password::RESET_LINK_SENT) {
-            throw ValidationException::withMessages([
-                'email' => [__($status)],
-            ]);
-        }
-
-        return response()->json(['status' => __($status)]);
+        $response = Password::reset($request->only('email', 'password', 'password_confirmation', 'token'), function ($user, $password) {
+            $user->password = Hash::make($password);
+            $user->save();
+        });
+        return $response == Password::PASSWORD_RESET
+            ? response()->json(['message' => 'Password reset successfully'], 200)
+            : response()->json(['error' => 'Failed to reset password'], 400);
     }
 }

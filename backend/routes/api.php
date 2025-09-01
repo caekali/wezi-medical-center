@@ -12,7 +12,8 @@ Route::get('/user', function (Request $request) {
 
 Route::prefix('/auth')->group(function () {
     Route::post("/login", [AuthController::class, 'login']);
-    Route::post("/password-reset", [PasswordResetLinkController::class, 'store']);
+    Route::post("/forgot-password", [PasswordResetLinkController::class, 'sendResetLinkEmail']);
+    Route::post("/reset-password", [PasswordResetLinkController::class, 'reset']);
 
     Route::middleware("auth:sanctum")->group(function () {
         Route::post("/logout", [AuthController::class, 'logout']);
