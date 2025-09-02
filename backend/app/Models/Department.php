@@ -18,8 +18,8 @@ class Department extends Model
     //     $this->hasMany(Dector)
     // }
 
-    public function services(): HasMany
-    {
-        $this->hasMany(Service::class);
-    }
+    // public function services(): HasMany
+    // {
+    //     $this->hasMany(Service::class);
+    // }
 }

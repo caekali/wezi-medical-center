@@ -6,10 +6,10 @@ use App\Models\Department;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
-class DepartmentServiceController extends Controller
+class DepartmentController extends Controller
 {
     /**
-     * List all departments with services.
+     * List all departments
      */
     public function index()
     {
