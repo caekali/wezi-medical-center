@@ -1,40 +1,26 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { RouterView } from 'vue-router'
+import Layout from './components/Layout.vue'
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-100 flex items-center justify-center">
-    <h1 class="text-4xl font-bold text-blue-600">Hello Tailwind + Vue!</h1>
+  <div id="app">
+    <RouterView />
   </div>
 </template>
 
-
-<style scoped>
-header {
-  line-height: 1.5;
+<style>
+/* Global styles */
+html {
+  scroll-behavior: smooth;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+* {
+  box-sizing: border-box;
 }
 </style>
