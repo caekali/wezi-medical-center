@@ -16,6 +16,7 @@ const navigationItems = [
   { name: 'Departments', href: '/departments', id: 'departments', isRoute: true },
   { name: 'Appointments', href: '#book-appointment', id: 'appointments', isRoute: false },
   { name: 'Map', href: '#map', id: 'map', isRoute: false },
+  { name: 'Chat with Us', href: '#map', id: 'chat', isRoute: false },
 ]
 
 const isActiveLink = (href, isRoute) => {
