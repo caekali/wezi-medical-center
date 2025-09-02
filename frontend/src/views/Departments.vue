@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import Layout from '../components/Layout.vue'
+import Navigation from '@/components/Navigation.vue'
 
 const departments = ref([
   {
@@ -103,6 +104,7 @@ const departments = ref([
 
 <template>
   <Layout>
+    <Navigation />
     <div class="min-h-screen bg-gray-50">
       <!-- Header Section -->
       <section class="bg-white py-16 lg:py-24">

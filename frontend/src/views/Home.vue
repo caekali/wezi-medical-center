@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import Layout from '../components/Layout.vue'
+import Navigation from '@/components/Navigation.vue'
 
 const isPlaying = ref(true);
 const currentSlide = ref(0);
@@ -122,35 +123,35 @@ onMounted(() => {
                class="w-full h-full object-cover"
                alt="Modern medical facility exterior with professional staff"
                loading="eager">
-          <div class="absolute inset-0 bg-black/35"></div>
+          <div class="absolute inset-0 bg-black/60"></div>
         </div>
         <div class="w-full h-full flex-shrink-0 relative">
           <img src="../assets/images/hero_2.jpg"
                class="w-full h-full object-cover"
                alt="Medical professionals providing patient care"
                loading="lazy">
-          <div class="absolute inset-0 bg-black/40"></div>
+          <div class="absolute inset-0 bg-black/60"></div>
         </div>
         <div class="w-full h-full flex-shrink-0 relative">
           <img src="../assets/images/hero_3.jpg"
                class="w-full h-full object-cover"
                alt="State-of-the-art medical equipment and technology"
                loading="lazy">
-          <div class="absolute inset-0 bg-black/40"></div>
+          <div class="absolute inset-0 bg-black/65"></div>
         </div>
         <div class="w-full h-full flex-shrink-0 relative">
           <img src="../assets/images/hero_4.jpg"
                class="w-full h-full object-cover"
                alt="Comfortable patient waiting and consultation areas"
                loading="lazy">
-          <div class="absolute inset-0 bg-black/40"></div>
+          <div class="absolute inset-0 bg-black/65"></div>
         </div>
         <div class="w-full h-full flex-shrink-0 relative">
           <img src="../assets/images/hero_5.jpg"
                class="w-full h-full object-cover"
                alt="Expert medical team in consultation"
                loading="lazy">
-          <div class="absolute inset-0 bg-black/40"></div>
+          <div class="absolute inset-0 bg-black/65"></div>
         </div>
       </div>
     </div>
@@ -159,22 +160,23 @@ onMounted(() => {
     <div class="relative z-10 flex flex-col h-screen">
       <!-- Header with transparent navigation -->
       <div class="absolute top-0 left-0 right-0 z-20">
-        <Layout :transparent-header="true" :show-skip-link="false" />
+        <Navigation :is-transparent="true" />
+        <Layout :show-skip-link="false" />
       </div>
 
       <main class="flex-1 flex flex-col md:flex-row items-center max-md:text-center justify-center px-6 sm:px-10 md:px-24 max-w-7xl mx-auto w-full" role="main">
         <div class="flex flex-col items-center md:items-start text-white">
-          <button class="mb-6 flex items-center space-x-2 border border-white/50 text-white text-xs rounded-full px-4 pr-1.5 py-1.5 hover:bg-white/10 transition backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white"
-                  aria-label="Learn about our services">
-            <span>Explore Our Services</span>
-            <span class="flex items-center justify-center size-6 p-1 rounded-full bg-white/20" aria-hidden="true">
-                <svg width="14" height="11" viewBox="0 0 16 13" fill="none">
-                    <path d="M1 6.5h14M9.5 1 15 6.5 9.5 12" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </span>
-          </button>
+<!--          <button class="mb-6 flex items-center space-x-2 border border-white/50 text-white text-xs rounded-full px-4 pr-1.5 py-1.5 hover:bg-white/10 transition backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white"-->
+<!--                  aria-label="Learn about our services">-->
+<!--            <span>Explore Our Services</span>-->
+<!--            <span class="flex items-center justify-center size-6 p-1 rounded-full bg-white/20" aria-hidden="true">-->
+<!--                <svg width="14" height="11" viewBox="0 0 16 13" fill="none">-->
+<!--                    <path d="M1 6.5h14M9.5 1 15 6.5 9.5 12" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />-->
+<!--                </svg>-->
+<!--            </span>-->
+<!--          </button>-->
 
-          <h1 class="text-white font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-3xl leading-tight text-center md:text-left">
+          <h1 class="text-white mt-20 font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-3xl leading-tight text-center md:text-left">
             <span class="text-indigo-200">LEAN ON US</span>
           </h1>
 

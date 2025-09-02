@@ -97,20 +97,14 @@ const togglePasswordVisibility = () => {
         <!-- Logo and Title -->
         <div class="text-center">
           <router-link to="/" class="inline-flex items-center">
-            <div class="h-12 w-12 bg-indigo-600 rounded-full flex items-center justify-center mr-3">
-              <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H9m0 0H5m0 0h2m13-16v6a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2z"/>
-              </svg>
+            <div class="h-12 w-12 bg-white rounded-full flex items-center justify-center mr-3">
+              <img src="../assets/logo.png" alt="">
             </div>
-            <span class="text-2xl font-bold text-gray-900">Wezi Medical</span>
           </router-link>
 
           <h2 class="mt-6 text-3xl font-bold text-gray-900">
             Sign in to your account
           </h2>
-          <p class="mt-2 text-sm text-gray-600">
-            Access your medical records and appointments
-          </p>
         </div>
       </div>
 

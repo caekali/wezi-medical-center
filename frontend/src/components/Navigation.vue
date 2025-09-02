@@ -30,7 +30,7 @@ const isActiveLink = (href, isRoute) => {
 
 const headerClasses = computed(() => {
   return props.isTransparent
-    ? 'bg-black/30'
+    ? ''
     : 'bg-white shadow-sm'
 })
 
@@ -81,7 +81,7 @@ const loginButtonClasses = computed(() => {
           :to="item.href"
           :class="[
             navLinkClasses,
-            isActiveLink(item.href, item.isRoute) ? 'text-indigo-500 font-semibold' : ''
+            isActiveLink(item.href, item.isRoute) ? 'border text-indigo-50 font-semibold' : ''
           ]"
           class="transition focus:outline-none focus:ring-2 rounded px-2 py-1"
           :aria-current="isActiveLink(item.href, item.isRoute) ? 'page' : undefined"
@@ -104,13 +104,12 @@ const loginButtonClasses = computed(() => {
 
     <div class="flex items-center space-x-4">
       <div class="hidden md:flex space-x-4">
-        <a
+        <router-link
           :class="loginButtonClasses"
           class="px-5 py-2 rounded-full text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-offset-2"
-          href="#login"
-        >
+         to="login">
           Login
-        </a>
+        </router-link>
       </div>
     </div>
   </header>

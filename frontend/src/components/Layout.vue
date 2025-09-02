@@ -24,9 +24,6 @@ defineProps({
       Skip to main content
     </a>
 
-    <!-- Navigation -->
-    <Navigation :is-transparent="transparentHeader" />
-
     <!-- Main Content -->
     <main id="main-content">
       <slot />
