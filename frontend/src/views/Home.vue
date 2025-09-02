@@ -135,9 +135,9 @@ onMounted(() => {
         <div class="w-full h-full flex-shrink-0 relative">
           <img src="../assets/images/hero_3.jpg"
                class="w-full h-full object-cover"
-               alt="State-of-the-art medical equipment and technology"
+               alt="Medical professionals providing patient care"
                loading="lazy">
-          <div class="absolute inset-0 bg-black/65"></div>
+          <div class="absolute inset-0 bg-black/60"></div>
         </div>
         <div class="w-full h-full flex-shrink-0 relative">
           <img src="../assets/images/hero_4.jpg"

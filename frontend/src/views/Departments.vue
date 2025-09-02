@@ -2,13 +2,17 @@
 import { ref } from 'vue'
 import Layout from '../components/Layout.vue'
 import Navigation from '@/components/Navigation.vue'
+import pediatricsImage from '@/assets/images/Departments/pediatrics.jpg'
+import dentalImage from '@/assets/images/Departments/dental.jpg'
+import antenatalImage from '@/assets/images/Departments/antenatal.jpg'
+import generalImage from '@/assets/images/Departments/general.jpg'
 
 const departments = ref([
   {
     id: 'general',
     name: 'General Medicine',
     description: 'Comprehensive primary healthcare services for patients of all ages.',
-    image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: generalImage,
     services: [
       'Annual Health Checkups',
       'Preventive Care',
@@ -22,14 +26,14 @@ const departments = ref([
     id: 'dental_care',
     name: 'Dental Care',
     description: 'Keeping your teeth, gums and mouth healthy.',
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: dentalImage,
     services: [
       'Dental Consultation',
       'Scale and Polish (Cleaning)',
       'Extractions',
       'Fillings',
     ],
-    icon: '❤️'
+    icon: '🦷'
   },
   {
     id: 'radiology',
@@ -42,12 +46,12 @@ const departments = ref([
       'High-end Ultrasonic',
       'Special Radiology Examinations',
     ],
-    icon: '🧴'
+    icon: '🩻'
   },{
     id: 'pediatrics',
     name: 'Pediatrics',
     description: 'Specialized healthcare for infants, children, and adolescents.',
-    image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: pediatricsImage,
     services: [
       'Well-Child Visits',
       'Immunizations',
@@ -58,18 +62,18 @@ const departments = ref([
     icon: '👶'
   },
   {
-    id: 'physiotherapy',
-    name: 'Physiotherapy',
-    description: 'Personalized rehabilitation and therapy services to restore movement, improve function, and relieve pain for patients recovering from injury, surgery, or chronic conditions.',
-    image: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    id: 'antenatal',
+    name: 'Antenatal Care',
+    description: 'Comprehensive prenatal care and monitoring for expecting mothers and their babies throughout pregnancy.',
+    image: antenatalImage,
     services: [
-      'Joint Replacement',
-      'Sports Medicine',
-      'Fracture Care',
-      'Arthroscopy',
-      'Physical Therapy'
+      'Prenatal Checkups',
+      'Ultrasound Scans',
+      'Pregnancy Monitoring',
+      'Nutritional Counseling',
+      'Birth Planning'
     ],
-    icon: '🦴'
+    icon: '🤰'
   },
   {
     id: 'emergency',
@@ -84,20 +88,6 @@ const departments = ref([
       'Ambulance Services'
     ],
     icon: '🚑'
-  },
-  {
-    id: 'radiology',
-    name: 'Radiology',
-    description: 'Advanced medical imaging and diagnostic services.',
-    image: 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    services: [
-      'X-Ray Imaging',
-      'MRI Scans',
-      'CT Scans',
-      'Ultrasound',
-      'Mammography'
-    ],
-    icon: '📡'
   }
 ])
 </script>
