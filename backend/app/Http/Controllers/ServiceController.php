@@ -8,79 +8,57 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    /**
-     * List all departments
-     */
-    public function index()
+   
+    public function index(Department $department)
     {
-        $services = Service::all();
+        $services = $department->services()->get();
         return response()->json($services);
     }
 
-    /**
-     * Store a new department or service.
-     */
-    public function store(Request $request,$departmentId)
+   
+    public function store(Request $request, Department $department)
     {
         $request->validate([
             'name' => 'required|string|max:255',
         ]);
 
-
-        $department = Department::findOrFail($departmentId);
-
-        $department->services()->create();
-
-        $department = Service::create([
-            'name' => $request->name,
-            'department_id' => 1
+        $service = $department->services()->create([
+            'name' => $request->name
         ]);
 
-        return response()->json($department, 201);
+        return response()->json($service, 201);
     }
 
-    /**
-     * Update department.
-     */
-    public function update(Request $request, $id)
+  
+    public function update(Request $request, Department $department, Service $service)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string'
+            'name' => 'required|string',
         ]);
 
-        $department = Department::findOrFail($id);
-        $department->update(['name' => $request->name, 'description' => $request->description]);
-        return response()->json($department);
+        $service->update(['name' => $request->name]);
+        return response()->json($service);
     }
 
-    /**
-     * Soft delete department.
-     */
-    public function destroy($type, $id)
+   
+    public function destroy(Department $department, Service $service)
     {
-        $department = Department::findOrFail($id);
-        $department->delete();
-        return response()->json(['message' => 'Department deleted']);
+        $service->delete();
+        return response()->json(['message' => 'Service deleted']);
     }
 
-    /**
-     * Show soft deleted items.
-     */
-    public function trashed($type)
+  
+    public function trashed()
     {
-
-        $trashed = Department::onlyTrashed()->get();
+        $trashed = Service::onlyTrashed()->get();
         return response()->json($trashed);
     }
 
-    /**
-     * Restore a soft deleted item.
-     */
+   
     public function restore($id)
     {
-        $department = Department::onlyTrashed()->findOrFail($id);
-        $department->restore();
-        return response()->json(['message' => 'Department restored']);
+        $service = Service::onlyTrashed()->findOrFail($id);
+        $service->restore();
+        return response()->json(['message' => 'Service restored']);
     }
 }

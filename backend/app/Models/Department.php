@@ -12,14 +12,13 @@ class Department extends Model
         'description'
     ];
 
+    public function doctors(): HasMany
+    {
+        $this->hasMany(Doctor::class);
+    }
 
-
-    // public function doctors() : HasMany{
-    //     $this->hasMany(Dector)
-    // }
-
-    // public function services(): HasMany
-    // {
-    //     $this->hasMany(Service::class);
-    // }
+    public function services(): HasMany
+    {
+        $this->hasMany(Service::class);
+    }
 }

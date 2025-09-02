@@ -8,18 +8,14 @@ use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
-    /**
-     * List all departments
-     */
+   
     public function index()
     {
         $departments = Department::all();
         return response()->json($departments);
     }
 
-    /**
-     * Store a new department or service.
-     */
+    
     public function store(Request $request)
     {
         $request->validate([
@@ -29,49 +25,38 @@ class DepartmentController extends Controller
 
         $department = Department::create([
             'name' => $request->name,
+            'description' => $request->description
         ]);
 
         return response()->json($department, 201);
     }
 
-    /**
-     * Update department.
-     */
-    public function update(Request $request, $id)
+   
+    public function update(Request $request, Department $department)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string'
+            'name' => 'sometimes|required|string|max:255',
+            'description' => 'sometimes|required|string'
         ]);
 
-        $department = Department::findOrFail($id);
         $department->update(['name' => $request->name, 'description' => $request->description]);
         return response()->json($department);
     }
 
-    /**
-     * Soft delete department.
-     */
-    public function destroy($type, $id)
+   
+    public function destroy(Department $department)
     {
-        $department = Department::findOrFail($id);
         $department->delete();
         return response()->json(['message' => 'Department deleted']);
     }
 
-    /**
-     * Show soft deleted items.
-     */
-    public function trashed($type)
+    public function trashed()
     {
-
         $trashed = Department::onlyTrashed()->get();
         return response()->json($trashed);
     }
 
-    /**
-     * Restore a soft deleted item.
-     */
+    
     public function restore($id)
     {
         $department = Department::onlyTrashed()->findOrFail($id);

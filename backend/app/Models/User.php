@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -23,7 +24,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
+
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -48,24 +52,31 @@ class User extends Authenticatable
         ];
     }
 
-    public function assignRole($role)
+    public function doctor() : HasOne
     {
-        if (is_string($role)) {
-            $role = Role::where('name', $role)->firstOrFail();
-        }
-
-        if (!$this->roles->contains($role->id)) {
-            $this->roles()->attach($role);
-        }
+        return $this->hasOne(Doctor::class);
     }
 
-    public function roles(): BelongsToMany
-    {
-        return $this->belongsToMany(Role::class, 'user_roles');
-    }
+    
 
-    public function hasRole(string $roleName): bool
-    {
-        return $this->roles->contains('name', $roleName);
-    }
+    // public function assignRole($role)
+    // {
+    //     if (is_string($role)) {
+    //         $role = Role::where('name', $role)->firstOrFail();
+    //     }
+
+    //     if (!$this->roles->contains($role->id)) {
+    //         $this->roles()->attach($role);
+    //     }
+    // }
+
+    // public function roles(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(Role::class, 'user_roles');
+    // }
+
+    // public function hasRole(string $roleName): bool
+    // {
+    //     return $this->roles->contains('name', $roleName);
+    // }
 }
